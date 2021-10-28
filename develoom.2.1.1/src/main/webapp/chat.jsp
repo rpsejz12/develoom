@@ -12,7 +12,7 @@
         <button type="button" onclick="closeSocket();">대회방 나가기</button>
     	<br/><br/><br/>
   		메세지 입력 : 
-        <input type="text" id="sender" value="${sessionScope.id}" style="display: none;">
+        <input type="text" id="sender" value="${user.email}" style="display: none;">
         <input type="text" id="messageinput">
         <button type="button" onclick="send();">메세지 전송</button>
         <button type="button" onclick="javascript:clearText();">대화내용 지우기</button>
