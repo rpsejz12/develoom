@@ -29,22 +29,23 @@ public class MemberDAO {
 	private final String loginSQL = "select * from member where email = ? and password = ?";
 	private final String signupSQL = "insert into member values(?,?,?)";
 	private final String signoutSQL = "delete from member where email = ?";
-	private final String uupdateSQL = "update set member nickname = ?, password = ? where email = ?";
+	private final String uUpdateSQL = "update set member nickname = ?, password = ? where email = ?";
 	
 	public List<MemberVO> login(MemberVO vo) {
+		System.out.println("vo" + vo);
 		Object[] args= { vo.getEmail(),vo.getPassword() };
 		return jdbcTemplate.query(loginSQL, args,new MemberRowMapper());		
 	}
-	public void signup(MemberVO vo) {
+	public boolean signup(MemberVO vo) {
 		Object[] args= { vo.getEmail(),vo.getNickname(),vo.getPassword()};
-		jdbcTemplate.update(signupSQL, args);
+		return (jdbcTemplate.update(signupSQL, args) >= 1 )? true : false;
 	}
-	public void signout(MemberVO vo) {
+	public boolean signout(MemberVO vo) {
 		Object[] args= { vo.getEmail()};
-		jdbcTemplate.update(signoutSQL, args);
+		return (jdbcTemplate.update(signoutSQL, args) >= 1 )? true : false;
 	}
-	public void uupdate(MemberVO vo) {
+	public boolean uUpdate(MemberVO vo) {
 		Object[] args= { vo.getNickname(),vo.getPassword(),vo.getEmail()};
-		jdbcTemplate.update(uupdateSQL, args);
+		return (jdbcTemplate.update(uUpdateSQL, args) >= 1 )? true : false;
 	}
 }

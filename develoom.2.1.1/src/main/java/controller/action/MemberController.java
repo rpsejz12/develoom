@@ -23,12 +23,13 @@ public class MemberController {
 	@RequestMapping("/login.do")
 	public String login(MemberVO vo,Model model) {
 		List<MemberVO> datas = memberService.login(vo);
+		System.out.println(datas);
 		if(datas.isEmpty()) {
 			return "redirect:login.jsp";
 		}
 		else {
 			model.addAttribute("user", datas.get(0));
-			return "redirect:main.do";
+			return "redirect:chat.jsp";
 		}
 	}
 
@@ -39,19 +40,19 @@ public class MemberController {
 	}
 
 	@RequestMapping("/signup.do")
-	public String signup(MemberVO vo,Model model) {
+	public String signup(MemberVO vo) {
 		memberService.signup(vo);
 		return "redirect:login.jsp";
 	}
 	
 	@RequestMapping("/signout.do")
-	public String signout(@ModelAttribute("user")MemberVO vo,Model model) {
+	public String signout(@ModelAttribute("user")MemberVO vo) {
 		memberService.signout(vo);
 		return "redirect:login.jsp";
 	}
 	
 	@RequestMapping("/uupdate.do")
-	public String uupdate(@ModelAttribute("user")MemberVO vo,Model model) {
+	public String uupdate(@ModelAttribute("user")MemberVO vo) {
 		memberService.uupdate(vo);
 		return "redirect:login.jsp";
 	}

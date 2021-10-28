@@ -20,21 +20,21 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public void signup(MemberVO vo) {
+	public boolean signup(MemberVO vo) {
 		// TODO Auto-generated method stub
-		memberDAO.signup(vo);
+		return memberDAO.signup(vo);
 	}
 
 	@Override
-	public void signout(MemberVO vo) {
+	public boolean signout(MemberVO vo) {
 		// TODO Auto-generated method stub
-		memberDAO.signout(vo);
+		return memberDAO.signout(vo);
 	}
 
 	@Override
-	public void uupdate(MemberVO vo) {
+	public boolean uupdate(MemberVO vo) {
 		// TODO Auto-generated method stub
-		memberDAO.uupdate(vo);
+		return memberDAO.uUpdate(vo);
 	}
 
 }
