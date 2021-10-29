@@ -11,14 +11,12 @@ import model.room.RoomVO;
 @Controller
 public class RoomController {
 	@Autowired
-	private RoomService roomService;
-	
+	private RoomService roomService;	
 	@RequestMapping("/main.do")
 	public String main(RoomVO vo,Model model) {
 		model.addAttribute("rdatas",roomService.rSelectAll());
 		return "main.jsp";
 	}
-	
 	@RequestMapping("/rinsert.do")
 	public String rinsert(RoomVO vo) {
 		roomService.rInsert(vo);

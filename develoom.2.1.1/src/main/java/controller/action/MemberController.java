@@ -25,11 +25,12 @@ public class MemberController {
 		List<MemberVO> datas = memberService.login(vo);
 		System.out.println(datas);
 		if(datas.isEmpty()) {
+			
 			return "redirect:login.jsp";
 		}
 		else {
 			model.addAttribute("user", datas.get(0));
-			return "redirect:chat.jsp";
+			return "redirect:main.do";
 		}
 	}
 

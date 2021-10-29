@@ -10,7 +10,6 @@ import model.chat.ChatVO;
 
 @Controller
 public class ChatController {
-	
 	@Autowired
 	private ChatService chatService;
 	
@@ -25,5 +24,4 @@ public class ChatController {
 		model.addAttribute("cdatas",chatService.cSelectAll(vo));
 		return "room.jsp";
 	}
-
 }

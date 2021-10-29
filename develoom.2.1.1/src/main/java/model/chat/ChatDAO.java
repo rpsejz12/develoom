@@ -31,7 +31,8 @@ public class ChatDAO {
 	private final String cInsertSQL = "insert into chat(rpk,email,content) values(?,?,?)";
 	
 	public List<ChatVO> cSelectAll(ChatVO vo) {
-		return jdbcTemplate.query(cSelectAllSQL,new ChatRowMapper());		
+		Object[] args= {vo.getRpk()};
+		return jdbcTemplate.query(cSelectAllSQL,args,new ChatRowMapper());		
 	}
 	public boolean cInsert(ChatVO vo) {
 		Object[] args= {vo.getRpk(), vo.getEmail(), vo.getContent()};
