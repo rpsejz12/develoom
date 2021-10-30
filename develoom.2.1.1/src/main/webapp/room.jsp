@@ -26,23 +26,21 @@
 		<!-- Nav -->
 		<nav id="nav"> <a href="#home" class="icon solid fa-home"><span>Home</span></a>
 		<a href="#work" class="icon solid fa-folder"><span>Work</span></a> <a
-			href="#contact" class="icon solid fa-envelope"><span>Contact</span></a>
+			href="#contact" class="icon solid fa-envelope active"><span>Contact</span></a>
 		<a href="https://twitter.com/ajlkn" class="icon brands fa-twitter"><span>Twitter</span></a>
 		</nav>
 
 		<!-- Main -->
 		<div id="main">
 			<article id="work" class="panel"> <header>
-			<h2>Work</h2>
+			<h2>Room</h2>
 			</header>
-			<p>Phasellus enim sapien, blandit ullamcorper elementum eu,
-				condimentum eu elit. Vestibulum ante ipsum primis in faucibus orci
-				luctus et ultrices posuere cubilia luctus elit eget interdum.</p>
 			<section>
 			<div class="row">
 				<div>
 					<button type="button" onclick="openSocket();">대화방 참여</button>
 					<button type="button" onclick="closeSocket();">대회방 나가기</button>
+				<div id="messages"></div>
 					<br /> <br /> <br /> 메세지 입력 : <input type="text" id="sender"
 						value="${user.email}" style="display: none;"> <input
 						type="text" id="messageinput"> <input type="text" id="rpk"
@@ -50,7 +48,6 @@
 					<button type="button" onclick="send();">메세지 전송</button>
 				</div>
 				<!-- Server responses get written here -->
-				<div id="messages"></div>
 			</div>
 			</section> </article>
 

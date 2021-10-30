@@ -33,32 +33,34 @@
 
 		<!-- Main -->
 		<div id="main">
-			<article id="work" class="panel">
+			<article id="home" class="panel intro">
 				<header>
-					<h2>Sign Up</h2>
+				<h2>Create Room</h2>
+				<br>
+					<form action="rinsert.do" method="post">
+						<input type="hidden" name="email" value="${user.email}">
+						<div class="col-6col-6-medium col-12-small">
+							<input type="text" name="roomname" placeholder="roomname"
+								required>
+						</div>
+						<br>
+						<div class="col-6 col-6-medium col-12-small">
+							<input type="password" name="password" placeholder="password"
+								required>
+						</div>
+
+						<div class="col-6 col-6-medium col-12-small"
+							style="margin-top: 50px">
+							<input type="submit" value="방 생성">
+						</div>
+
+					</form>
 				</header>
-				<section>
-					<div class="row">
 
-						<form action="rinsert.do" method="post">
-							<input type="hidden" name="email" value="${user.email}">
-							<div class="col-6 col-6-medium col-12-small">Room Name</div>
-							<div class="col-6col-6-medium col-12-small">
-								<input type="text" name="roomname" required>
-							</div>
-							<div class="col-6 col-6-medium col-12-small">Password</div>
-							<div class="col-6 col-6-medium col-12-small">
-								<input type="password" name="password" required>
-							</div>
-
-							<div class="col-6 col-6-medium col-12-small"
-								style="margin-top: 50px">
-								<input type="submit" value="방 생성">
-							</div>
-
-						</form>
-					</div>
-				</section>
+				<a href="main.do" class="jumplink pic"> <span
+					class="arrow icon solid fa-chevron-left"><span>See my
+							work</span></span> <img src="images/me.jpg" alt="" />
+				</a>
 			</article>
 
 

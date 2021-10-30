@@ -1847,14 +1847,14 @@ input, select, textarea {
 					border-right: solid 0.6em transparent;
 				}
 
-			#nav a:hover {
+		/* 	#nav a:hover {
 				opacity: 1.0;
 			}
 
 				#nav a:hover span {
 					opacity: 1.0;
 				}
-
+ */
 			#nav a.active {
 				opacity: 1.0;
 			}
@@ -1980,7 +1980,7 @@ input, select, textarea {
 
 			#main > .panel.intro {
 				padding: 0;
-				height: 20em;
+				height: 22em;
 				display: -moz-flex;
 				display: -webkit-flex;
 				display: -ms-flex;

@@ -27,22 +27,21 @@
 		<nav id="nav">
 			<a href="#home" class="icon solid fa-home"><span>Home</span></a> <a
 				href="#work" class="icon solid fa-folder"><span>Work</span></a> <a
-				href="#contact" class="icon solid fa-envelope"><span>Contact</span></a>
+				href="#contact" class="icon solid fa-envelope active"><span>Contact</span></a>
 			<a href="https://twitter.com/ajlkn" class="icon brands fa-twitter"><span>Twitter</span></a>
 		</nav>
 
 		<!-- Main -->
 		<div id="main">
-			<article id="work" class="panel">
+			<!-- <article id="contact" class="panel">
 				<header>
 					<h2>Sign Up</h2>
 				</header>
 				<section>
-					<div class="row">
-
+					<div class="column">
 						<form action="signup.do" method="post">
-							<div class="col-6 col-6-medium col-12-small">ID</div>
-							<div class="col-6col-6-medium col-12-small">
+							<div class="col-6 col-6-medium col-12-small"><span>ID</span></div>
+							<div class="col-6 col-6-medium col-12-small">
 								<input type="text" name="email" required>
 							</div>
 							<div class="col-6 col-6-medium col-12-small">Nick Name</div>
@@ -62,6 +61,37 @@
 						</form>
 					</div>
 				</section>
+			</article> -->
+
+			<article id="home" class="panel intro">
+				<header style="margin-top: 50px">
+					<h2>Sign Up</h2>
+					<br>
+					<form action="signup.do" method="post" name="form1">
+						<div class="col-4 col-6-medium col-12-small">
+							<input type="text" name="email" placeholder = "email" required>
+						</div>
+						<br>
+						<div class="col-4 col-6-medium col-12-small">
+							<input type="text" name="nickname" placeholder = "nickname" required>
+						</div>
+						<br>
+						<div class="col-4 col-6-medium col-12-small">
+							<input type="password" name="password" placeholder = "password" required>
+						</div>
+
+						<br>
+						<div class="col-4 col-6-medium col-12-small">
+							<input
+								type="button" value="회원가입" onclick="location.href='signup.jsp'">
+						</div>
+					</form>
+				</header>
+
+				<a href="login.jsp" class="jumplink pic"> <span
+					class="arrow icon solid fa-chevron-left"><span>See
+							my work</span></span> <img src="images/me.jpg" alt="" />
+				</a>
 			</article>
 
 

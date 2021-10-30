@@ -25,9 +25,9 @@
 
 		<!-- Nav -->
 		<nav id="nav">
-			<a href="#home" class="icon solid fa-home"><span>Home</span></a> <a
-				href="#work" class="icon solid fa-folder"><span>Work</span></a> <a
-				href="#contact" class="icon solid fa-envelope"><span>Contact</span></a>
+			<a href="#" class="icon solid fa-home"><span>Home</span></a> <a
+				href="main.do" class="icon solid fa-folder active"><span>Work</span></a> <a
+				href="#" class="icon solid fa-envelope"><span>Contact</span></a>
 			<a href="https://twitter.com/ajlkn" class="icon brands fa-twitter"><span>Twitter</span></a>
 		</nav>
 
@@ -35,14 +35,10 @@
 		<div id="main">
 			<article id="work" class="panel">
 				<header>
-					<h2>Work</h2>
+					<h2>Room List</h2>
 				</header>
-				<p>Phasellus enim sapien, blandit ullamcorper elementum eu,
-					condimentum eu elit. Vestibulum ante ipsum primis in faucibus orci
-					luctus et ultrices posuere cubilia luctus elit eget interdum.</p>
 				<section>
 					<div class="row">
-
 						<c:forEach var="v" items="${rdatas}">
 							<div class="col-4 col-6-medium col-12-small">
 								<a href="room.do?rpk=${v.rpk}" class="image fit"> <img

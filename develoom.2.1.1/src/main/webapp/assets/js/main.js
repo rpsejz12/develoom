@@ -70,7 +70,7 @@
 					||	$panel.length == 0) {
 
 						$panel = $panels.first();
-						$link = $nav_links.first();
+						/*$link = $nav_links.first(); 삼각형*/ 
 
 					}
 
