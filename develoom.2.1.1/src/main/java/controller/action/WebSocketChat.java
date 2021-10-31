@@ -1,9 +1,7 @@
 package controller.action;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.websocket.OnClose;
@@ -17,13 +15,23 @@ import javax.websocket.server.ServerEndpoint;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import model.chat.ChatService;
+import model.chat.ChatVO;
+import model.chat.EchoDAO;
+
 @Controller
-@ServerEndpoint(value="/echo/{rpk}")
+@ServerEndpoint(value="/echo.do/{rpk}")
 public class WebSocketChat {
 	private static final Map<Session, String> sessionMap = new HashMap<Session,String>();
 	private static final Logger logger = LoggerFactory.getLogger(WebSocketChat.class);
+	
+	private ChatVO vo = new ChatVO();
+	public EchoDAO dao = new EchoDAO();
+	
+	
 	public WebSocketChat() {
 		// TODO Auto-generated constructor stub
 		System.out.println("웹소켓(서버) 객체생성");
@@ -36,7 +44,7 @@ public class WebSocketChat {
 		logger.info("Open session id:"+session.getId());
 		try {
 			final Basic basic=session.getBasicRemote();
-			basic.sendText("대화방에 연결 되었습니다." + rpk);
+			basic.sendText("대화방에 연결 되었습니다.");
 		}catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
@@ -55,7 +63,7 @@ public class WebSocketChat {
 			try {
 				if(key!=self) {
 					if(value.equals(rpk)) {
-						key.getBasicRemote().sendText(sender+" : "+message + " : " + rpk);
+						key.getBasicRemote().sendText(sender+" : "+message);
 					}
 				}
 			} catch (IOException e) {
@@ -63,7 +71,6 @@ public class WebSocketChat {
 				e.printStackTrace();
 			}
 		});
-
 	}
 
 	/*
@@ -72,16 +79,18 @@ public class WebSocketChat {
 	 * @param session
 	 */
 	@OnMessage
-	public void onMessage(String message,Session session) {
-
-		String rpk = message.split(",")[2];
+	public void onMessage(String message,Session session, @PathParam("rpk")String rpk) {
 		String sender = message.split(",")[1];
-		message = message.split(",")[0];
-
+		message = message.split(",")[0];	
 		logger.info("Message From "+sender + ": "+message +" : " + rpk);
+		vo.setRpk(Integer.parseInt(rpk));
+		vo.setEmail(sender);
+		vo.setContent(message);
+		dao.cInsert(vo);
 		try {
 			final Basic basic=session.getBasicRemote();
 			basic.sendText("<나> : "+message);
+			
 		}catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());

@@ -40,10 +40,10 @@
 				<div>
 					<button type="button" onclick="openSocket();">대화방 참여</button>
 					<button type="button" onclick="closeSocket();">대회방 나가기</button>
-				<div id="messages"></div>
+				<div id="messages" style="overflow:auto; height:30em; width:40em; word-break:break-all;"></div>
 					<br /> <br /> <br /> 메세지 입력 : <input type="text" id="sender"
 						value="${user.email}" style="display: none;"> <input
-						type="text" id="messageinput"> <input type="text" id="rpk"
+						type="text" id="messageinput"> <input type="hidden" id="rpk" name = "rpk"
 						value="${param.rpk}" readonly>
 					<button type="button" onclick="send();">메세지 전송</button>
 				</div>
@@ -81,7 +81,7 @@
 				return;
 			}
 			//웹소켓 객체 만드는 코드
-			ws = new WebSocket("ws://localhost:8066/echo/${param.rpk}");
+			ws = new WebSocket("ws://localhost:8066/echo.do/${param.rpk}");
 			ws.onopen = function(event) {
 				if (event.data === undefined) {
 					return;
@@ -92,6 +92,7 @@
 				console.log('writeResponse');
 				console.log(event.data)
 				writeResponse(event.data);
+				messages.scrollTop=messages.scrollHeight; //스크롤 맨 아래고정
 			};
 			ws.onclose = function(event) {
 				writeResponse("대화 종료");
@@ -99,8 +100,7 @@
 		}
 		function send() {
 			var text = document.getElementById("messageinput").value + ","
-					+ document.getElementById("sender").value + ","
-					+ document.getElementById("rpk").value;
+					+ document.getElementById("sender").value;
 			ws.send(text);
 			console.log(text);
 			text = "";

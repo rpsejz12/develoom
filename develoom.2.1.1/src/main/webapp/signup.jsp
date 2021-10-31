@@ -33,36 +33,6 @@
 
 		<!-- Main -->
 		<div id="main">
-			<!-- <article id="contact" class="panel">
-				<header>
-					<h2>Sign Up</h2>
-				</header>
-				<section>
-					<div class="column">
-						<form action="signup.do" method="post">
-							<div class="col-6 col-6-medium col-12-small"><span>ID</span></div>
-							<div class="col-6 col-6-medium col-12-small">
-								<input type="text" name="email" required>
-							</div>
-							<div class="col-6 col-6-medium col-12-small">Nick Name</div>
-							<div class="col-6 col-6-medium col-12-small">
-								<input type="text" name="nickname" required>
-							</div>
-
-							<div class="col-6 col-6-medium col-12-small">Password</div>
-							<div class="col-6 col-6-medium col-12-small">
-								<input type="password" name="password" required>
-							</div>
-
-							<div class="col-6 col-6-medium col-12-small" style="margin-top:50px">
-								<input type="submit" value="회원가입">
-							</div>
-
-						</form>
-					</div>
-				</section>
-			</article> -->
-
 			<article id="home" class="panel intro">
 				<header style="margin-top: 50px">
 					<h2>Sign Up</h2>
