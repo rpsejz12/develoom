@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--
@@ -33,19 +34,30 @@
 		<!-- Main -->
 		<div id="main">
 			<article id="work" class="panel"> <header>
-			<h2>Room</h2>
-			</header>
-			<section>
+			<h2>
+				Room
+				<button type="button" onclick="closeSocket();" style="float: right;">대회방
+					나가기</button>
+			</h2>
+
+
+			</header> <section>
 			<div class="row">
 				<div>
-					<button type="button" onclick="openSocket();">대화방 참여</button>
-					<button type="button" onclick="closeSocket();">대회방 나가기</button>
-				<div id="messages" style="overflow:auto; height:30em; width:40em; word-break:break-all;"></div>
-					<br /> <br /> <br /> 메세지 입력 : <input type="text" id="sender"
-						value="${user.email}" style="display: none;"> <input
-						type="text" id="messageinput"> <input type="hidden" id="rpk" name = "rpk"
-						value="${param.rpk}" readonly>
-					<button type="button" onclick="send();">메세지 전송</button>
+					<br>
+					<div id="messages"
+						style="overflow: auto; height: 20em; width: 40em; word-break: break-all;">
+						<c:forEach var="v" items="${cdatas}">
+							${v.email} : ${v.content}<br>
+						</c:forEach>
+					</div>
+					<br />
+					<div>
+						<br /> <input type="hidden" id="sender" value="${user.email}"
+							><textarea id="messageinput" onkeydown="onKeydown()" onkeyup="onKeyup()"style="resize:none; width:80%; height:100px;"></textarea> <input type="hidden" id="rpk"
+							name="rpk" value="${param.rpk}" readonly>
+						<button type="button" onclick="send();" id="send" style="float:right">메세지 전송</button>
+					</div>
 				</div>
 				<!-- Server responses get written here -->
 			</div>
@@ -75,7 +87,7 @@
 		var ws;
 		var messages = document.getElementById("messages");
 
-		function openSocket() {
+		var app = function() {
 			if (ws !== undefined && ws.readyState !== WebSocket.CLOSED) {
 				writeResponse("WebSocket is already opened.");
 				return;
@@ -92,18 +104,20 @@
 				console.log('writeResponse');
 				console.log(event.data)
 				writeResponse(event.data);
-				messages.scrollTop=messages.scrollHeight; //스크롤 맨 아래고정
+				messages.scrollTop = messages.scrollHeight; //스크롤 맨 아래고정
 			};
 			ws.onclose = function(event) {
 				writeResponse("대화 종료");
 			}
-		}
+		};
+
 		function send() {
 			var text = document.getElementById("messageinput").value + ","
 					+ document.getElementById("sender").value;
 			ws.send(text);
 			console.log(text);
 			text = "";
+			$('textarea').val('');
 		}
 
 		function closeSocket() {
@@ -114,6 +128,20 @@
 		function writeResponse(text) {
 			messages.innerHTML += "<br/>" + text;
 		}
+		
+		function onKeydown(){
+			if(event.keyCode==13){
+				document.getElementById('send').click();
+			}
+		}
+		
+		function onKeyup(){
+			if(event.keyCode==13){
+				$('textarea').val('');
+			}
+		}
+		
+		app();
 	</script>
 </body>
 </html>

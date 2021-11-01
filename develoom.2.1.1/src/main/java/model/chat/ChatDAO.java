@@ -27,7 +27,7 @@ public class ChatDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	private final String cSelectAllSQL = "select * from chat where rpk = ?";
+	private final String cSelectAllSQL = "select * from chat where rpk = ? order by cpk asc";
 	private final String cInsertSQL = "insert into chat(rpk,email,content) values(?,?,?)";
 	
 	public List<ChatVO> cSelectAll(ChatVO vo) {

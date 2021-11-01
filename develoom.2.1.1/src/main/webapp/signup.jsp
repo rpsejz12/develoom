@@ -53,7 +53,7 @@
 						<br>
 						<div class="col-4 col-6-medium col-12-small">
 							<input
-								type="button" value="회원가입" onclick="location.href='signup.jsp'">
+								type="submit" value="회원가입">
 						</div>
 					</form>
 				</header>
