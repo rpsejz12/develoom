@@ -49,7 +49,7 @@
 						<br>
 						<div class="col-4 col-6-medium col-12-small">
 							<input type="submit" value="로그인"> &nbsp; <input
-								type="button" value="회원가입" onclick="location.href='signup.jsp'">
+								type="button" value="회원가입" onclick="location.href='mform.jsp'">
 						</div>
 					</form>
 				</header>

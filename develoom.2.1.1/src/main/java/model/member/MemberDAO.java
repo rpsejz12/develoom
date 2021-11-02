@@ -29,7 +29,7 @@ public class MemberDAO {
 	private final String loginSQL = "select * from member where email = ? and password = ?";
 	private final String signupSQL = "insert into member values(?,?,?)";
 	private final String signoutSQL = "delete from member where email = ?";
-	private final String uUpdateSQL = "update set member nickname = ?, password = ? where email = ?";
+	private final String mUpdateSQL = "update member set nickname = ?, password = ? where email = ?";
 	
 	public List<MemberVO> login(MemberVO vo) {
 		System.out.println("vo" + vo);
@@ -44,8 +44,8 @@ public class MemberDAO {
 		Object[] args= { vo.getEmail()};
 		return (jdbcTemplate.update(signoutSQL, args) >= 1 )? true : false;
 	}
-	public boolean uUpdate(MemberVO vo) {
+	public boolean mUpdate(MemberVO vo) {
 		Object[] args= { vo.getNickname(),vo.getPassword(),vo.getEmail()};
-		return (jdbcTemplate.update(uUpdateSQL, args) >= 1 )? true : false;
+		return (jdbcTemplate.update(mUpdateSQL, args) >= 1 )? true : false;
 	}
 }

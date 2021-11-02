@@ -32,10 +32,12 @@
 		</nav>
 
 		<!-- Main -->
-		<div id="main">
+		<div id="main">		
 			<article id="work" class="panel"> <header>
 			<h2>
 				Room
+				<button type="button" id="downBtn" style="float: right; margin-left: 10px">채팅 다운로드</button>
+				
 				<button type="button" onclick="closeSocket();" style="float: right;">대회방
 					나가기</button>
 			</h2>
@@ -48,7 +50,7 @@
 					<div id="messages"
 						style="overflow: auto; height: 20em; width: 40em; word-break: break-all;">
 						<c:forEach var="v" items="${cdatas}">
-							${v.email} : ${v.content}<br>
+							<c:if test = "${v.email== user.email}">&lt;나&gt;</c:if><c:if test = "${v.email!= user.email}">${v.email}</c:if> : ${v.content}<br>
 						</c:forEach>
 					</div>
 					<br />
@@ -82,6 +84,24 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script type="text/javascript">
+            function download(filename, textInput) {
+
+                  var element = document.createElement('a');
+                  element.setAttribute('href','data:text/plain;charset=utf-8, ' + encodeURIComponent(textInput));
+                  element.setAttribute('download', filename);
+                  document.body.appendChild(element);
+                  element.click();
+            }
+            document.getElementById("downBtn")
+                  .addEventListener("click", function () {
+                      const element =  document.getElementById("messages");
+                	  var text = element.innerText;
+                        
+                        var filename = "${user.email}${param.rpk}.txt";
+                        download(filename, text);
+                  }, false); 
+      </script>
 
 	<script type="text/javascript">
 		var ws;

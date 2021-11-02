@@ -32,9 +32,9 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public boolean uupdate(MemberVO vo) {
+	public boolean mupdate(MemberVO vo) {
 		// TODO Auto-generated method stub
-		return memberDAO.uUpdate(vo);
+		return memberDAO.mUpdate(vo);
 	}
 
 }

@@ -52,9 +52,9 @@ public class MemberController {
 		return "redirect:login.jsp";
 	}
 	
-	@RequestMapping("/uupdate.do")
-	public String uupdate(@ModelAttribute("user")MemberVO vo) {
-		memberService.uupdate(vo);
+	@RequestMapping("/mupdate.do")
+	public String mupdate(@ModelAttribute("user")MemberVO vo) {
+		memberService.mupdate(vo);
 		return "redirect:login.jsp";
 	}
 

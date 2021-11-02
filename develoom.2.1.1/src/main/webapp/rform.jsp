@@ -34,10 +34,12 @@
 		<!-- Main -->
 		<div id="main">
 			<article id="home" class="panel intro">
+			<c:choose>
+			<c:when test="${param.rpk == null}">
 				<header>
 				<h2>Create Room</h2>
 				<br>
-					<form action="rinsert.do" method="post">
+					<form action="rinsert.do" method="post" name = "form1">
 						<input type="hidden" name="email" value="${user.email}">
 						<div class="col-6col-6-medium col-12-small">
 							<input type="text" name="roomname" placeholder="roomname"
@@ -56,11 +58,42 @@
 
 					</form>
 				</header>
-
 				<a href="main.do" class="jumplink pic"> <span
 					class="arrow icon solid fa-chevron-left"><span>See my
 							work</span></span> <img src="images/me.jpg" alt="" />
 				</a>
+				</c:when>
+				<c:otherwise>
+				<header>
+				<h2>Edit Room</h2>
+				<br>
+					<form action="rupdate.do" method="post" name = "form2">
+						<input type="hidden" name="email" value="${user.email}">
+						<div class="col-6col-6-medium col-12-small">
+							<input type="text" name="roomname" placeholder="roomname" value = "${rdata.roomname}"
+								required>
+						</div>
+						<br>
+						<div class="col-6 col-6-medium col-12-small">
+							<input type="password" name="password" placeholder="password" value = "${rdata.password}"
+								required>
+						</div>
+
+						<div class="col-6 col-6-medium col-12-small"
+							style="margin-top: 50px">
+							<input type="submit" value="방 수정"> &nbsp;
+							<input type="button" value="방 삭제">
+						</div>
+						
+
+					</form>
+				</header>
+				<a href="main.do" class="jumplink pic"> <span
+					class="arrow icon solid fa-chevron-left"><span>See my
+							work</span></span> <img src="images/me.jpg" alt="" />
+				</a>
+				</c:otherwise>
+				</c:choose>
 			</article>
 
 
