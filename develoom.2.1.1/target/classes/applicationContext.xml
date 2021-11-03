@@ -22,4 +22,18 @@
 		<property name="password" value="rnjs7672" />
 	</bean>
 	
+	<!-- Mybatis dao에 세션 펙토리 주입 -->
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sessionFactory"></constructor-arg>
+	</bean>
+
+	<!-- sessionFactory 데이터 소스 받아와서 생성, sql 메핑 -->
+	<bean id="sessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation"
+			value="classpath:sql-map-config.xml" />
+	</bean>
+	
+	
 </beans>

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class RoomServiceImpl implements RoomService{
 	
 	@Autowired
-	private RoomDAO roomDAO;
+	private MybatisRoomDAO roomDAO;
 
 	@Override
 	public List<RoomVO> rSelectAll() {

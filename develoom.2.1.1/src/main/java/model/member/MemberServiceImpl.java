@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class MemberServiceImpl implements MemberService{
 
 	@Autowired
-	private MemberDAO memberDAO; // alt+shift+R -> 이름 한번에 변경 가능!
+	private MybatisMemberDAO memberDAO; // alt+shift+R -> 이름 한번에 변경 가능!
 	
 	
 	@Override

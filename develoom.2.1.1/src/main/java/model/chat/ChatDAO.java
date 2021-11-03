@@ -28,14 +28,9 @@ public class ChatDAO {
 	private JdbcTemplate jdbcTemplate;
 	
 	private final String cSelectAllSQL = "select * from chat where rpk = ? order by cpk asc";
-	private final String cInsertSQL = "insert into chat(rpk,email,content) values(?,?,?)";
 	
 	public List<ChatVO> cSelectAll(ChatVO vo) {
 		Object[] args= {vo.getRpk()};
 		return jdbcTemplate.query(cSelectAllSQL,args,new ChatRowMapper());		
-	}
-	public boolean cInsert(ChatVO vo) {
-		Object[] args= {vo.getRpk(), vo.getEmail(), vo.getContent()};
-		return (jdbcTemplate.update(cInsertSQL, args) >= 1 )? true : false;
 	}
 }

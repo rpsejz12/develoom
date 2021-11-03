@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- jdbc와의 커넥션 -->
+	<!-- 별칭 설정 -->
+	<typeAliases>
+		<typeAlias alias="chat" type="model.chat.ChatVO" />
+		<typeAlias alias="member" type="model.member.MemberVO" />
+		<typeAlias alias="room" type="model.room.RoomVO" />
+	</typeAliases>
+	<!-- Datasorurce -->
+	
+	<mappers>
+		<mapper resource="mappings/chat-mapping.xml"/>
+		<mapper resource="mappings/member-mapping.xml"/>
+		<mapper resource="mappings/room-mapping.xml"/>
+	</mappers>
+
+
+</configuration>

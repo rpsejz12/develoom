@@ -91,7 +91,7 @@
 
 								<br>
 								<div class="col-4 col-6-medium col-12-small">
-									<input type="submit" value="정보 수정">&nbsp;<input type="button" value="회원 탈퇴">
+									<input type="submit" value="정보 수정">&nbsp;<input type="button" value="회원 탈퇴" onclick="location.href='signout.do'">
 								</div>
 							</form>
 						</header>
