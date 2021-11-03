@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <!--
 	Astral by HTML5 UP
@@ -24,39 +25,38 @@
 
 		<!-- Nav -->
 		<nav id="nav">
-			<a href="login.jsp" class="icon solid fa-home"><span>Home</span></a>
-			<a href="" class="icon solid fa-folder"><span>Work</span></a> <a
-				href="" class="icon solid fa-envelope"><span>Contact</span></a> <a
-				href="" class="icon brands fa-twitter active"><span>Twitter</span></a>
+			<a href="main.do" class="icon solid fa-home"><span>Home</span></a> <a
+				href="myroom.do" class="icon solid fa-folder active"><span>Work</span></a> <a
+				href="" class="icon solid fa-envelope"><span>Contact</span></a>
+			<a href="mform.jsp" class="icon brands fa-twitter"><span>Twitter</span></a>
 		</nav>
 
 		<!-- Main -->
 		<div id="main">
-
-			<!-- Me -->
-			<article id="home" class="panel intro">
+			<article id="work" class="panel">
 				<header>
-					<h2>Log In</h2>
-					<br>
-					<form action="login.do" method="post" name="form1">
-						<div class="col-4 col-6-medium col-12-small">
-							<input type="text" name="email" placeholder="email">
-						</div>
-						<br>
-						<div class="col-4 col-6-medium col-12-small">
-							<input type="password" name="password" placeholder="password">
-						</div>
-						<br>
-						<div class="col-4 col-6-medium col-12-small">
-							<input type="submit" value="로그인"> &nbsp; <input
-								type="button" value="회원가입" onclick="location.href='mform.jsp'">
-						</div>
-					</form>
+					<h2>My Room List</h2>
 				</header>
-
-				<a href="#" class="jumplink pic"><img src="images/me.jpg" alt="" />
-				</a>
+				<section>
+					<div class="row">
+						<c:forEach var="v" items="${rdatas}">
+							<div class="col-4 col-6-medium col-12-small">
+								<a href="rform.do?rpk=${v.rpk}" class="image fit"> <img
+									src="images/pic01.jpg" alt="">
+								</a>
+							</div>
+						</c:forEach>
+					</div>
+					
+					<div class="row" style="margin-top:50px">
+						<div class="col-2 col-3-medium col-4-small" style="align:right">
+							<Button type="button" onclick="location.href='logout.do'">로그 아웃</Button>
+						</div>
+					</div>
+				</section>
 			</article>
+
+
 		</div>
 
 		<!-- Footer -->
@@ -66,7 +66,6 @@
 				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 			</ul>
 		</div>
-
 	</div>
 
 	<!-- Scripts -->

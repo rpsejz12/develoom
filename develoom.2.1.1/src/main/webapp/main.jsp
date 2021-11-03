@@ -25,10 +25,10 @@
 
 		<!-- Nav -->
 		<nav id="nav">
-			<a href="#" class="icon solid fa-home"><span>Home</span></a> <a
-				href="main.do" class="icon solid fa-folder active"><span>Work</span></a> <a
-				href="#" class="icon solid fa-envelope"><span>Contact</span></a>
-			<a href="https://twitter.com/ajlkn" class="icon brands fa-twitter"><span>Twitter</span></a>
+			<a href="main.do" class="icon solid fa-home active"><span>Home</span></a> <a
+				href="myroom.do" class="icon solid fa-folder"><span>Work</span></a> <a
+				href="" class="icon solid fa-envelope"><span>Contact</span></a>
+			<a href="mform.jsp" class="icon brands fa-twitter"><span>Twitter</span></a>
 		</nav>
 
 		<!-- Main -->
@@ -53,14 +53,11 @@
 					
 					<div class="row" style="margin-top:50px">
 						<div class="col-2 col-3-medium col-4-small">
-							<Button type="button" onclick="location.href='rinsert.jsp'">방
+							<Button type="button" onclick="location.href='rform.jsp'">방
 								생성</Button>
 						</div>
-						<div class="col-2 col-3-medium col-4-small">
-							<Button type="button" onclick="location.href='signout.do'">회원 탈퇴</Button>
-						</div>
-						<div class="col-2 col-3-medium col-4-small">
-							<Button type="button" onclick="location.href='logout.do'">로그 아웃!!!!</Button>
+						<div class="col-2 col-3-medium col-4-small" style="align:right">
+							<Button type="button" onclick="location.href='logout.do'">로그 아웃</Button>
 						</div>
 					</div>
 				</section>

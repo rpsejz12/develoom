@@ -22,6 +22,10 @@ public class RoomServiceImpl implements RoomService{
 		// TODO Auto-generated method stub
 		return roomDAO.rSelectAllMy(vo);
 	}
+	
+	public RoomVO rSelectOne(RoomVO vo) {
+		return roomDAO.rSelectOne(vo);
+	}
 
 	@Override
 	public boolean rInsert(RoomVO vo) {
