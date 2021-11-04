@@ -44,6 +44,12 @@
 								<a href="room.do?rpk=${v.rpk}" class="image fit"> <img
 									src="images/pic01.jpg" alt="">
 								</a>
+								<form action="room.do" method="post" style="">
+									<input type = "hidden" name = "rpk" value = "${v.rpk}" readonly>
+									<input type = "text" name = "roomname" value ="${v.roomname}" readonly>
+									<input type = "password" name = "password">
+									<input type = "submit" style = "display:none">			
+								</form>
 							</div>
 						</c:forEach>
 
