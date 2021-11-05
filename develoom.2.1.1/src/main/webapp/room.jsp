@@ -28,16 +28,16 @@
 		<nav id="nav"> <a href="#home" class="icon solid fa-home"><span>Home</span></a>
 		<a href="" class="icon solid fa-folder"><span>Work</span></a> <a
 			href="" class="icon solid fa-envelope active"><span>Contact</span></a>
-		<a href="" class="icon brands fa-twitter"><span>Twitter</span></a>
-		</nav>
+		<a href="" class="icon brands fa-twitter"><span>Twitter</span></a> </nav>
 
 		<!-- Main -->
-		<div id="main">		
+		<div id="main">
 			<article id="work" class="panel"> <header>
 			<h2>
 				Room
-				<button type="button" id="downBtn" style="float: right; margin-left: 10px">채팅 다운로드</button>
-				
+				<button type="button" id="downBtn"
+					style="float: right; margin-left: 10px">채팅 다운로드</button>
+
 				<button type="button" onclick="closeSocket();" style="float: right;">대회방
 					나가기</button>
 			</h2>
@@ -50,15 +50,20 @@
 					<div id="messages"
 						style="overflow: auto; height: 20em; width: 40em; word-break: break-all;">
 						<c:forEach var="v" items="${cdatas}">
-							<c:if test = "${v.email== user.email}">&lt;나&gt;</c:if><c:if test = "${v.email!= user.email}">${v.email}</c:if> : ${v.content}<br>
+							<c:if test="${v.email== user.email}">&lt;나&gt;</c:if>
+							<c:if test="${v.email!= user.email}">${v.email}</c:if> : ${v.content}<br>
 						</c:forEach>
 					</div>
 					<br />
 					<div>
-						<br /> <input type="hidden" id="sender" value="${user.email}"
-							><textarea id="messageinput" onkeydown="onKeydown()" onkeyup="onKeyup()"style="resize:none; width:80%; height:100px;"></textarea> <input type="hidden" id="rpk"
-							name="rpk" value="${param.rpk}" readonly>
-						<button type="button" onclick="send();" id="send" style="float:right">메세지 전송</button>
+						<br /> <input type="hidden" id="sender" value="${user.email}">
+						<textarea id="messageinput" onkeydown="onKeydown()"
+							onkeyup="onKeyup()"
+							style="resize: none; width: 80%; height: 100px;"></textarea>
+						<input type="hidden" id="rpk" name="rpk" value="${param.rpk}"
+							readonly>
+						<button type="button" onclick="send();" id="send"
+							style="float: right">메세지 전송</button>
 					</div>
 				</div>
 				<!-- Server responses get written here -->
@@ -85,25 +90,24 @@
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 	<script type="text/javascript">
-            function download(filename, textInput) {
+		function download(filename, textInput) {
 
-                  var element = document.createElement('a');
-                  element.setAttribute('href','data:text/plain;charset=utf-8, ' + encodeURIComponent(textInput));
-                  element.setAttribute('download', filename);
-                  document.body.appendChild(element);
-                  element.click();
-            }
-            document.getElementById("downBtn")
-                  .addEventListener("click", function () {
-                      const element =  document.getElementById("messages");
-                	  var text = element.innerText;
-                        
-                        var filename = "${user.email}${param.rpk}.txt";
-                        download(filename, text);
-                  }, false); 
-      </script>
+			var element = document.createElement('a');
+			element.setAttribute('href', 'data:text/plain;charset=utf-8, '
+					+ encodeURIComponent(textInput));
+			element.setAttribute('download', filename);
+			document.body.appendChild(element);
+			element.click();
+		}
+		document.getElementById("downBtn").addEventListener("click",
+				function() {
+					const element = document.getElementById("messages");
+					var text = element.innerText;
 
-	<script type="text/javascript">
+					var filename = "${user.email}${param.rpk}.txt";
+					download(filename, text);
+				}, false);
+
 		var ws;
 		var messages = document.getElementById("messages");
 
@@ -148,20 +152,21 @@
 		function writeResponse(text) {
 			messages.innerHTML += "<br/>" + text;
 		}
-		
-		function onKeydown(){
-			if(event.keyCode==13){
+
+		function onKeydown() {
+			if (event.keyCode == 13) {
 				document.getElementById('send').click();
 			}
 		}
-		
-		function onKeyup(){
-			if(event.keyCode==13){
+
+		function onKeyup() {
+			if (event.keyCode == 13) {
 				$('textarea').val('');
 			}
 		}
-		
+
 		app();
 	</script>
+
 </body>
 </html>

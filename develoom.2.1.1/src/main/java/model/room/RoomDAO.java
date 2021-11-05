@@ -30,14 +30,14 @@ public class RoomDAO {
 	
 	private final String rSelectAllSQL = "select * from room";
 	private final String rSelectAllMySQL = "select * from room where email = ?";
-	private final String rSelectOneSQL = "select * from room where rpk = ?";
+	private final String rSelectOneSQL = "select * from room where rpk = ? and password = ?";
 	private final String rInsertSQL = "insert into room(email,roomname,password) values(?,?,?)";
 	private final String rDeleteSQL = "delete from room where rpk = ?";
 	private final String rUpdateSQL = "update set room roomname = ?, password = ? where rpk = ?";
 	
-	public RoomVO rSelectOne(RoomVO vo) {
-		Object[] args= {vo.getRpk()};
-		return jdbcTemplate.queryForObject(rSelectOneSQL,args,new RoomRowMapper());
+	public List<RoomVO> rSelectOne(RoomVO vo) {
+		Object[] args= {vo.getRpk(), vo.getPassword()};
+		return jdbcTemplate.query(rSelectOneSQL,args,new RoomRowMapper());
 	}	
 	public List<RoomVO> rSelectAll() {
 		return jdbcTemplate.query(rSelectAllSQL,new RoomRowMapper());		

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import model.chat.ChatService;
+import model.chat.ChatVO;
 import model.member.MemberVO;
 import model.room.RoomService;
 import model.room.RoomVO;
@@ -16,6 +18,10 @@ import model.room.RoomVO;
 public class RoomController {
 	@Autowired
 	private RoomService roomService;	
+	
+	@Autowired
+	private ChatService chatService;	
+	
 	@RequestMapping("/main.do")
 	public String main(RoomVO vo,Model model) {
 		model.addAttribute("rdatas",roomService.rSelectAll());
@@ -24,10 +30,25 @@ public class RoomController {
 	
 	@RequestMapping("/myroom.do")
 	public String myroom(RoomVO vo,Model model, @ModelAttribute("user")MemberVO mvo) {
+		System.out.println(mvo);
 		vo.setEmail(mvo.getEmail());
 		model.addAttribute("rdatas",roomService.rSelectAllMy(vo));
 		return "myroom.jsp";
 	}
+	
+	
+	@RequestMapping("/room.do")
+	public String room(ChatVO cvo,RoomVO rvo, Model model) {
+		RoomVO data = roomService.rSelectOne(rvo);
+		if(data == null) {		
+			return "redirect:main.do";
+		}
+		else {
+			model.addAttribute("cdatas",chatService.cSelectAll(cvo));
+			return "room.jsp";
+		}
+	}
+	
 	
 	@RequestMapping("/rform.do")
 	public String rform(RoomVO vo,Model model) {

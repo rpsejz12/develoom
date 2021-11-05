@@ -23,7 +23,6 @@ public class MemberController {
 	@RequestMapping("/login.do")
 	public String login(MemberVO vo,Model model) {
 		List<MemberVO> datas = memberService.login(vo);
-		System.out.println(datas);
 		if(datas.isEmpty()) {
 			
 			return "redirect:login.jsp";

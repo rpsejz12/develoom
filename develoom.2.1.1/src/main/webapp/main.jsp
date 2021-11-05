@@ -9,13 +9,24 @@
 -->
 <html>
 <head>
+<style type="text/css">
+.on {
+	display: none;
+}
+
+.opacity {
+	opacity: 0.5;
+}
+</style>
 <title>Astral by HTML5 UP</title>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/room.css" />
 <noscript>
 	<link rel="stylesheet" href="assets/css/noscript.css" />
+	
 </noscript>
 </head>
 <body class="is-preload">
@@ -25,10 +36,10 @@
 
 		<!-- Nav -->
 		<nav id="nav">
-			<a href="main.do" class="icon solid fa-home active"><span>Home</span></a> <a
-				href="myroom.do" class="icon solid fa-folder"><span>Work</span></a> <a
-				href="" class="icon solid fa-envelope"><span>Contact</span></a>
-			<a href="mform.jsp" class="icon brands fa-twitter"><span>Twitter</span></a>
+			<a href="main.do" class="icon solid fa-home active"><span>Home</span></a>
+			<a href="myroom.do" class="icon solid fa-folder"><span>Work</span></a>
+			<a href="" class="icon solid fa-envelope"><span>Contact</span></a> <a
+				href="mform.jsp" class="icon brands fa-twitter"><span>Twitter</span></a>
 		</nav>
 
 		<!-- Main -->
@@ -41,29 +52,38 @@
 					<div class="row">
 						<c:forEach var="v" items="${rdatas}">
 							<div class="col-4 col-6-medium col-12-small">
-								<a href="room.do?rpk=${v.rpk}" class="image fit"> <img
-									src="images/pic01.jpg" alt="">
-								</a>
-								<form action="room.do" method="post" style="">
-									<input type = "hidden" name = "rpk" value = "${v.rpk}" readonly>
-									<input type = "text" name = "roomname" value ="${v.roomname}" readonly>
-									<input type = "password" name = "password">
-									<input type = "submit" style = "display:none">			
-								</form>
+								<div style="position: relative">
+									<div style="position: absolute; margin-top:10%;">
+										<form action="room.do" method="post" class="on"
+											name="roomform" id="room${v.rpk}"
+											style="width: 90%; margin-left: 5%; z-index:1; position:relative">
+
+											<input type="hidden" name="rpk" value="${v.rpk}" readonly>
+											<input type="text" name="roomname" value="${v.roomname}"
+												readonly><input type="password" name="password"
+												style="margin-top: 10px"> <input type="submit"
+												style="display: none">
+										</form>
+									</div>
+									<a class="image fit" href="javascript:void(0);"
+										onclick="sroom(${v.rpk})"><img id="img${v.rpk}"
+										src="images/pic01.jpg" alt=""> </a>
+
+								</div>
 							</div>
 						</c:forEach>
 
 						<%-- ${v.email} ${v.roomname}${v.password} ${v.rdatetime} --%>
-
 					</div>
-					
-					<div class="row" style="margin-top:50px">
+
+					<div class="row" style="margin-top: 50px">
 						<div class="col-2 col-3-medium col-4-small">
 							<Button type="button" onclick="location.href='rform.jsp'">방
 								생성</Button>
 						</div>
-						<div class="col-2 col-3-medium col-4-small" style="align:right">
-							<Button type="button" onclick="location.href='logout.do'">로그 아웃</Button>
+						<div class="col-2 col-3-medium col-4-small" style="align: right">
+							<Button type="button" onclick="location.href='logout.do'">로그
+								아웃</Button>
 						</div>
 					</div>
 				</section>
@@ -87,6 +107,9 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/room.js"></script>
+
+
 
 </body>
 </html>

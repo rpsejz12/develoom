@@ -35,7 +35,7 @@
 		<div id="main">
 			<article id="home" class="panel intro">
 			<c:choose>
-			<c:when test="${param.rpk == null}">
+			<c:when test="${rdata == null}">
 				<header>
 				<h2>Create Room</h2>
 				<br>
