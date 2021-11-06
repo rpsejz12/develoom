@@ -6,6 +6,7 @@ public class RoomVO {
 	private String roomname;
 	private String password;
 	private String rdatetime;
+	
 	public int getRpk() {
 		return rpk;
 	}
@@ -36,6 +37,7 @@ public class RoomVO {
 	public void setRdatetime(String rdatetime) {
 		this.rdatetime = rdatetime;
 	}
+
 	@Override
 	public String toString() {
 		return "RoomVO [rpk=" + rpk + ", email=" + email + ", roomname=" + roomname + ", password=" + password

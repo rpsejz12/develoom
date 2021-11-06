@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="assets/css/room.css" />
 <noscript>
 	<link rel="stylesheet" href="assets/css/noscript.css" />
-	
+
 </noscript>
 </head>
 <body class="is-preload">
@@ -51,18 +51,20 @@
 				<section>
 					<div class="row">
 						<c:forEach var="v" items="${rdatas}">
-							<div class="col-4 col-6-medium col-12-small">
+							<div class="col-6 col-6-medium col-12-small">
 								<div style="position: relative">
-									<div style="position: absolute; margin-top:10%;">
+									<div style="position: absolute; margin-top: 10%;">
 										<form action="room.do" method="post" class="on"
 											name="roomform" id="room${v.rpk}"
-											style="width: 90%; margin-left: 5%; z-index:1; position:relative">
+											style="width: 90%; margin-left: 5%; z-index: 1; position: relative">
 
 											<input type="hidden" name="rpk" value="${v.rpk}" readonly>
-											<input type="text" name="roomname" value="${v.roomname}"
-												readonly><input type="password" name="password"
-												style="margin-top: 10px"> <input type="submit"
-												style="display: none">
+											<input type="hidden" name="roomname" value="${v.roomname}"
+												readonly> <span
+												style="border-bottom: outset; font-weight: 500;">No.${v.rpk}
+												title : ${v.roomname}</span><input type="password" name="password"
+												placeholder="Password" style="margin-top: 10px"> <input
+												type="submit" style="display: none">
 										</form>
 									</div>
 									<a class="image fit" href="javascript:void(0);"
@@ -72,15 +74,35 @@
 								</div>
 							</div>
 						</c:forEach>
-
-						<%-- ${v.email} ${v.roomname}${v.password} ${v.rdatetime} --%>
 					</div>
 
+					<div class="row">
+						<c:if test="${paging.startPage != 1 }">
+							<a href="main.do?page=${(page-1)-(page-1)%paging.perPageSet - paging.perPageSet + 1}">이전</a>
+
+							<!-- 이전페이지 -->
+						</c:if>
+						<c:forEach begin="${paging.startPage}" end="${paging.endPage}"
+							var="p">
+							<c:if test="${paging.curPage == p}">
+								<a href="main.do?page=${p}" style="font-weight:bold">${p}</a>
+							</c:if>
+							<c:if test="${paging.curPage != p}">
+								<a
+									href="main.do?page=${p}">${p}</a>
+							</c:if>
+						</c:forEach>
+						<c:if test="${paging.endPage != paging.lastPage}">
+							<a
+								href="main.do?page=${(page-1)-(page-1)%paging.perPageSet + paging.perPageSet + 1}">다음</a>
+							<!-- 다음페이지 -->
+						</c:if>
+					</div>
+
+
+
+
 					<div class="row" style="margin-top: 50px">
-						<div class="col-2 col-3-medium col-4-small">
-							<Button type="button" onclick="location.href='rform.jsp'">방
-								생성</Button>
-						</div>
 						<div class="col-2 col-3-medium col-4-small" style="align: right">
 							<Button type="button" onclick="location.href='logout.do'">로그
 								아웃</Button>

@@ -1,16 +1,21 @@
-package common.page;
+package model.page;
 
 public class PageVO {
 	
-	int curPage;	
-	int startPage;	
-	int endPage;	
-	int lastPage;	
-	int total;		
-	int perPage;	
-	int perPageSet; 
-	int start;		
-	int end;	
+	private int curPage;	
+	private int startPage;	
+	private int endPage;	
+	private int lastPage;	
+	private int total;		
+	private int perPage;	
+	private int perPageSet; 
+	private int start;		
+	private int end;
+	
+	private String email;
+	private String type;
+	
+	
 
 	public int getCurPage() {
 		return curPage;
@@ -65,13 +70,26 @@ public class PageVO {
 	}
 	public void setEnd(int end) {
 		this.end = end;
+	}	
+	public String getEmail() {
+		return email;
 	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 	
 	@Override
 	public String toString() {
 		return "PageVO [curPage=" + curPage + ", startPage=" + startPage + ", endPage=" + endPage + ", lastPage="
 				+ lastPage + ", total=" + total + ", perPage=" + perPage + ", perPageSet=" + perPageSet + ", start="
-				+ start + ", end=" + end + "]";
+				+ start + ", end=" + end + ", email=" + email + ", type=" + type + "]";
 	}
 	
 

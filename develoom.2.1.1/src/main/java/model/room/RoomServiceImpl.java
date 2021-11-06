@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import model.page.PageVO;
+
 @Service("roomService")
 public class RoomServiceImpl implements RoomService{
 	
@@ -12,15 +14,9 @@ public class RoomServiceImpl implements RoomService{
 	private MybatisRoomDAO roomDAO;
 
 	@Override
-	public List<RoomVO> rSelectAll() {
+	public List<RoomVO> rSelectAll(PageVO vo) {
 		// TODO Auto-generated method stub
-		return roomDAO.rSelectAll();
-	}
-
-	@Override
-	public List<RoomVO> rSelectAllMy(RoomVO vo) {
-		// TODO Auto-generated method stub
-		return roomDAO.rSelectAllMy(vo);
+		return roomDAO.rSelectAll(vo);
 	}
 	
 	public RoomVO rSelectOne(RoomVO vo) {

@@ -2,11 +2,12 @@ package model.room;
 
 import java.util.List;
 
+import model.page.PageVO;
+
 public interface RoomService {
-	public List<RoomVO> rSelectAll();
-	public List<RoomVO> rSelectAllMy(RoomVO vo);
-	public RoomVO rSelectOne(RoomVO vo);
-	public boolean rInsert(RoomVO vo);
-	public boolean rDelete(RoomVO vo);
-	public boolean rUpdate(RoomVO vo);
+	public List<RoomVO> rSelectAll(PageVO pvo);
+	public RoomVO rSelectOne(RoomVO rvo);
+	public boolean rInsert(RoomVO rvo);
+	public boolean rDelete(RoomVO rvo);
+	public boolean rUpdate(RoomVO rvo);
 }

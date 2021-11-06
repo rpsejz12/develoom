@@ -58,7 +58,7 @@
 
 					</form>
 				</header>
-				<a href="main.do" class="jumplink pic"> <span
+				<a href="myroom.do" class="jumplink pic"> <span
 					class="arrow icon solid fa-chevron-left"><span>See my
 							work</span></span> <img src="images/me.jpg" alt="" />
 				</a>

@@ -7,6 +7,7 @@
 		<typeAlias alias="chat" type="model.chat.ChatVO" />
 		<typeAlias alias="member" type="model.member.MemberVO" />
 		<typeAlias alias="room" type="model.room.RoomVO" />
+		<typeAlias alias="page" type="model.page.PageVO" />
 	</typeAliases>
 	<!-- Datasorurce -->
 	
@@ -14,6 +15,7 @@
 		<mapper resource="mappings/chat-mapping.xml"/>
 		<mapper resource="mappings/member-mapping.xml"/>
 		<mapper resource="mappings/room-mapping.xml"/>
+		<mapper resource="mappings/page-mapping.xml"/>
 	</mappers>
 
 
