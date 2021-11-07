@@ -4,6 +4,7 @@ public class ChatVO {
 	private int cpk;
 	private int rpk;
 	private String email;
+	private String nickname;
 	private String content;
 	private String cdatetime;
 	
@@ -25,6 +26,12 @@ public class ChatVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public String getContent() {
 		return content;
 	}
@@ -40,8 +47,8 @@ public class ChatVO {
 	
 	@Override
 	public String toString() {
-		return "ChatVO [cpk=" + cpk + ", rpk=" + rpk + ", email=" + email + ", content=" + content + ", cdatetime="
-				+ cdatetime + "]";
+		return "ChatVO [cpk=" + cpk + ", rpk=" + rpk + ", email=" + email + ", nickname=" + nickname + ", content="
+				+ content + ", cdatetime=" + cdatetime + "]";
 	}
 }
 

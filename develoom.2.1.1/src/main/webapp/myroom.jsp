@@ -58,9 +58,17 @@
 												type="submit" style="display: none">
 										</form>
 									</div>
-									<a class="image fit" href="javascript:void(0);"
-										onclick="sroom(${v.rpk})"><img id="img${v.rpk}"
-										src="images/pic01.jpg" alt=""> </a>
+
+									<c:if test="${v.filepath == null}">
+										<a class="image fit" href="javascript:void(0);"
+											onclick="sroom(${v.rpk})"><img id="img${v.rpk}"
+											src="images/pic01.jpg" alt=""> </a>
+									</c:if>
+									<c:if test="${v.filepath != null}">
+										<a class="image fit" href="javascript:void(0);"
+											onclick="sroom(${v.rpk})"><img id="img${v.rpk}"
+											src="images/${v.filepath}" alt=""> </a>
+									</c:if>
 
 								</div>
 							</div>
@@ -79,7 +87,7 @@
 						<c:forEach begin="${paging.startPage}" end="${paging.endPage}"
 							var="p">
 							<c:if test="${paging.curPage == p}">
-								<a href="myroom.do?page=${p}" style="font-weight:bold">${p}</a>
+								<a href="myroom.do?page=${p}" style="font-weight: bold">${p}</a>
 							</c:if>
 							<c:if test="${paging.curPage != p}">
 								<a href="myroom.do?page=${p}">${p}</a>

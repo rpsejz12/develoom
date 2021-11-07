@@ -5,6 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import model.page.PageVO;
 
@@ -22,8 +23,17 @@ public class MybatisRoomDAO {
 	public boolean rInsert(RoomVO vo) {
 		return (mybatis.insert("roomdao.rinsert", vo)>=1)? true: false;
 	}
+	@Transactional
 	public boolean rDelete(RoomVO vo) {
-		return (mybatis.delete("roomdao.rdelete", vo)>=1)? true: false;
+		boolean flag = true;
+		
+		if(mybatis.delete("roomdao.rdelete", vo)==0) {
+			flag = false;
+		}
+		if(mybatis.delete("chatdao.cdeletetx", vo)==0) {
+			flag = false;
+		}
+		return flag;
 	}
 	public boolean rUpdate(RoomVO vo) {
 		return (mybatis.update("roomdao.rupdate", vo)>=1)? true: false;

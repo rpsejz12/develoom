@@ -56,7 +56,7 @@
 					</div>
 					<br />
 					<div>
-						<br /> <input type="hidden" id="sender" value="${user.email}">
+						<br /> <input type="hidden" id="sender" value="${user.email},${user.nickname}">
 						<textarea id="messageinput" onkeydown="onKeydown()"
 							onkeyup="onKeyup()"
 							style="resize: none; width: 80%; height: 100px;"></textarea>

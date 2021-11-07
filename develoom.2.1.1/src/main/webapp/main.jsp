@@ -67,9 +67,16 @@
 												type="submit" style="display: none">
 										</form>
 									</div>
-									<a class="image fit" href="javascript:void(0);"
-										onclick="sroom(${v.rpk})"><img id="img${v.rpk}"
-										src="images/pic01.jpg" alt=""> </a>
+									<c:if test="${v.filepath == null}">
+										<a class="image fit" href="javascript:void(0);"
+											onclick="sroom(${v.rpk})"><img id="img${v.rpk}"
+											src="images/pic01.jpg" alt="기본 이미지"> </a>
+									</c:if>
+									<c:if test="${v.filepath != null}">
+										<a class="image fit" href="javascript:void(0);"
+											onclick="sroom(${v.rpk})"><img id="img${v.rpk}"
+											src="images/${v.filepath}" alt=""> </a>
+									</c:if>
 
 								</div>
 							</div>
@@ -78,18 +85,18 @@
 
 					<div class="row">
 						<c:if test="${paging.startPage != 1 }">
-							<a href="main.do?page=${(page-1)-(page-1)%paging.perPageSet - paging.perPageSet + 1}">이전</a>
+							<a
+								href="main.do?page=${(page-1)-(page-1)%paging.perPageSet - paging.perPageSet + 1}">이전</a>
 
 							<!-- 이전페이지 -->
 						</c:if>
 						<c:forEach begin="${paging.startPage}" end="${paging.endPage}"
 							var="p">
 							<c:if test="${paging.curPage == p}">
-								<a href="main.do?page=${p}" style="font-weight:bold">${p}</a>
+								<a href="main.do?page=${p}" style="font-weight: bold">${p}</a>
 							</c:if>
 							<c:if test="${paging.curPage != p}">
-								<a
-									href="main.do?page=${p}">${p}</a>
+								<a href="main.do?page=${p}">${p}</a>
 							</c:if>
 						</c:forEach>
 						<c:if test="${paging.endPage != paging.lastPage}">

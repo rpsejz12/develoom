@@ -58,12 +58,12 @@ public class WebSocketChat {
 	 * @param sender
 	 * @param message
 	 */
-	private void sendAllSessionToMessage(Session self, String sender, String message, String rpk) {
+	private void sendAllSessionToMessage(Session self, String nickname, String message, String rpk) {
 		sessionMap.forEach((key, value)->{
 			try {
 				if(key!=self) {
 					if(value.equals(rpk)) {
-						key.getBasicRemote().sendText(sender+" : "+message);
+						key.getBasicRemote().sendText(nickname+" : "+message);
 					}
 				}
 			} catch (IOException e) {
@@ -80,11 +80,13 @@ public class WebSocketChat {
 	 */
 	@OnMessage
 	public void onMessage(String message,Session session, @PathParam("rpk")String rpk) {
-		String sender = message.split(",")[1];
+		String nickname = message.split(",")[2];
+		String email = message.split(",")[1];
 		message = message.split(",")[0];	
-		logger.info("Message From "+sender + ": "+message +" : " + rpk);
+		logger.info("Message From "+ nickname + ": "+message +" : " + rpk);
 		vo.setRpk(Integer.parseInt(rpk));
-		vo.setEmail(sender);
+		vo.setEmail(email);
+		vo.setNickname(nickname);
 		vo.setContent(message);
 		dao.cInsert(vo);
 		try {
@@ -95,7 +97,7 @@ public class WebSocketChat {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
 		}
-		sendAllSessionToMessage(session, sender, message, rpk);
+		sendAllSessionToMessage(session, nickname, message, rpk);
 	}
 
 	@OnError

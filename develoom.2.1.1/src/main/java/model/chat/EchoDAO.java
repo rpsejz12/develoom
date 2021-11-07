@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class EchoDAO {
 	private Connection conn;
 	private PreparedStatement pstmt;
-	private final String cInsertSQL = "insert into chat(rpk,email,content) values(?,?,?)";
+	private final String cInsertSQL = "insert into chat(rpk,email,nickname,content) values(?,?,?,?)";
 
 	public void cInsert(ChatVO vo) {
 		try {
@@ -15,7 +15,8 @@ public class EchoDAO {
 			pstmt=conn.prepareStatement(cInsertSQL);
 			pstmt.setInt(1, vo.getRpk());
 			pstmt.setString(2, vo.getEmail());
-			pstmt.setString(3, vo.getContent());
+			pstmt.setString(3, vo.getNickname());
+			pstmt.setString(4, vo.getContent());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

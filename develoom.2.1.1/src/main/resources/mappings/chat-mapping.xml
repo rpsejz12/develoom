@@ -4,4 +4,10 @@
 	<select id="cselectall" resultType="chat">
 		select * from chat where rpk = #{rpk} order by cpk asc
 	</select>
+	
+	<delete id="cdeletetx">
+		delete from chat where rpk = #{rpk}
+	</delete>
+	
+	
 </mapper>
