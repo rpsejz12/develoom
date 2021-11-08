@@ -15,6 +15,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
+<link rel="develoom icon" href="images/develoom.ico">
 <noscript>
 	<link rel="stylesheet" href="assets/css/noscript.css" />
 </noscript>
@@ -51,7 +52,7 @@
 						style="overflow: auto; height: 20em; width: 40em; word-break: break-all;">
 						<c:forEach var="v" items="${cdatas}">
 							<c:if test="${v.email== user.email}">&lt;나&gt;</c:if>
-							<c:if test="${v.email!= user.email}">${v.email}</c:if> : ${v.content}<br>
+							<c:if test="${v.email!= user.email}">${v.nickname}</c:if> : ${v.content}<br>
 						</c:forEach>
 					</div>
 					<br />

@@ -23,6 +23,7 @@ public class MybatisRoomDAO {
 	public boolean rInsert(RoomVO vo) {
 		return (mybatis.insert("roomdao.rinsert", vo)>=1)? true: false;
 	}
+	
 	@Transactional
 	public boolean rDelete(RoomVO vo) {
 		boolean flag = true;

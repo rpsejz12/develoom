@@ -15,29 +15,21 @@ public class RoomServiceImpl implements RoomService{
 
 	@Override
 	public List<RoomVO> rSelectAll(PageVO vo) {
-		// TODO Auto-generated method stub
 		return roomDAO.rSelectAll(vo);
-	}
-	
+	}	
 	public RoomVO rSelectOne(RoomVO vo) {
 		return roomDAO.rSelectOne(vo);
 	}
-
 	@Override
 	public boolean rInsert(RoomVO vo) {
-		// TODO Auto-generated method stub
 		return roomDAO.rInsert(vo);
 	}
-
 	@Override
 	public boolean rDelete(RoomVO vo) {
-		// TODO Auto-generated method stub
 		return roomDAO.rDelete(vo);
 	}
-
 	@Override
 	public boolean rUpdate(RoomVO vo) {
-		// TODO Auto-generated method stub
 		return roomDAO.rUpdate(vo);
 	}
 

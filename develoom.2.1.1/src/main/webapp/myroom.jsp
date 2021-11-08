@@ -15,6 +15,7 @@
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="assets/css/room.css" />
+<link rel="develoom icon" href="images/develoom.ico">
 <noscript>
 	<link rel="stylesheet" href="assets/css/noscript.css" />
 </noscript>
