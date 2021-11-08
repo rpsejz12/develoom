@@ -99,10 +99,18 @@
 
 							</form>
 						</header>
+						<c:if test="${rdata.filepath == null}">
+						<a href="myroom.do" class="jumplink pic"> <span
+							class="arrow icon solid fa-chevron-left"><span>See
+									my work</span></span> <img src="images/pic01.jpg" alt="수정 이미지" class = "thumb"/>
+						</a>
+						</c:if>
+						<c:if test="${rdata.filepath != null}">
 						<a href="myroom.do" class="jumplink pic"> <span
 							class="arrow icon solid fa-chevron-left"><span>See
 									my work</span></span> <img src="images/${rdata.filepath}" alt="수정 이미지" class = "thumb"/>
 						</a>
+						</c:if>
 					</c:otherwise>
 				</c:choose>
 			</article>

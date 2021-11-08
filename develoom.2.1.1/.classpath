@@ -40,6 +40,5 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/KIM_0622/resource/jar/jsoup-1.13.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -16,6 +16,9 @@ public class MybatisMemberDAO {
 	public List<MemberVO> login(MemberVO vo) {
 		return mybatis.selectList("memberdao.login",vo);	
 	}
+	public MemberVO check(MemberVO vo) {
+		return mybatis.selectOne("memberdao.check",vo);	
+	}
 	public boolean signup(MemberVO vo) {
 		return (mybatis.insert("memberdao.signup", vo)>=1)? true: false;
 	}

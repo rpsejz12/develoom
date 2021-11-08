@@ -38,5 +38,15 @@
 			<property name="paramName" value="lang" />
 		</bean>
 	</mvc:interceptors>
+	
+	
+	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.NullPointerException">error.jsp</prop>
+			</props>
+		</property>
+		<property name="defaultErrorView" value="error.jsp" />
+	</bean>
 
 </beans>

@@ -37,4 +37,10 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.mUpdate(vo);
 	}
 
+	@Override
+	public MemberVO check(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return memberDAO.check(vo);
+	}
+
 }

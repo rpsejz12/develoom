@@ -13,4 +13,7 @@
 	<select id="login" resultType="member">
 		select * from member where email = #{email} and password = #{password}
 	</select>
+	<select id="check" resultType="member">
+		select * from member where email = #{email}
+	</select>
 </mapper>

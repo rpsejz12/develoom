@@ -83,27 +83,31 @@
 						</c:forEach>
 					</div>
 
-					<div class="row">
-						<c:if test="${paging.startPage != 1 }">
-							<a
-								href="main.do?page=${(page-1)-(page-1)%paging.perPageSet - paging.perPageSet + 1}">이전</a>
+					<div class="row" style = "justify-content: center;">
+						<div class="col-6" style = "text-align: center;">
+							<c:if test="${paging.startPage != 1 }">
+								<a
+									href="main.do?page=${(page-1)-(page-1)%paging.perPageSet - paging.perPageSet + 1}">이전</a>
 
-							<!-- 이전페이지 -->
-						</c:if>
-						<c:forEach begin="${paging.startPage}" end="${paging.endPage}"
-							var="p">
-							<c:if test="${paging.curPage == p}">
-								<a href="main.do?page=${p}" style="font-weight: bold">${p}</a>
+								<!-- 이전페이지 -->
+								&nbsp;
 							</c:if>
-							<c:if test="${paging.curPage != p}">
-								<a href="main.do?page=${p}">${p}</a>
+							<c:forEach begin="${paging.startPage}" end="${paging.endPage}"
+								var="p">
+								<c:if test="${paging.curPage == p}">
+									<a href="main.do?page=${p}" style="font-weight: bold">${p}</a>
+								</c:if>
+								<c:if test="${paging.curPage != p}">
+									<a href="main.do?page=${p}">${p}</a>
+								</c:if>
+								&nbsp;
+							</c:forEach>
+							<c:if test="${paging.endPage != paging.lastPage}">
+								<a
+									href="main.do?page=${(page-1)-(page-1)%paging.perPageSet + paging.perPageSet + 1}">다음</a>
+								<!-- 다음페이지 -->
 							</c:if>
-						</c:forEach>
-						<c:if test="${paging.endPage != paging.lastPage}">
-							<a
-								href="main.do?page=${(page-1)-(page-1)%paging.perPageSet + paging.perPageSet + 1}">다음</a>
-							<!-- 다음페이지 -->
-						</c:if>
+						</div>
 					</div>
 
 
